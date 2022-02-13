@@ -1,17 +1,15 @@
 #!/usr/local/bin/python3
-# ##############################################################################
-# ROT13 is a simple algorithm that shifts letters in a string forward
-# 13 positions. ROT13 can be used to encrypt and decrypt strings as
-# ROT13(ROT13(input)) == input.
-#
-# Usage: rot13 input
-#
-# Author : Thomas Kausch
-# Date   : 10.2.2022
-#
-# ##############################################################################
+"""
+ ROT13 is a simple algorithm that shifts letters in a string forward
+ 13 positions.
+
+ ROT13 can be used to encrypt and decrypt strings.
+"""
+
 
 def create_keys():
+    """Create encryption and decryption dictionary. """
+
     lower_case = "abcdefghijklmnopqrstuvwxyz"
     upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     keys = {}
@@ -22,6 +20,7 @@ def create_keys():
 
 
 def encrypt(input):
+    """Return the rot13 encoded input string."""
     return "".join(map(lambda char: keys.get(char, char), input))
 
 

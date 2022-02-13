@@ -1,8 +1,12 @@
+"""
+ ROT13 module testing
+"""
 import unittest
 import rot13
 
 
 class TestRot13(unittest.TestCase):
+    """ Testing rot13 encryption and decryption."""
 
     def test_invertability(self):
         text = "Meet me at seven at the boat"
