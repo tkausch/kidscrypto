@@ -7,24 +7,23 @@
 """
 
 
-def setup_keys(keys):
+def setup_key_map(key_mapping):
     """Create encryption and decryption dictionary. """
 
     lower_case = "abcdefghijklmnopqrstuvwxyz"
     upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     for i in range(0, 26):
-        keys[lower_case[i]] = lower_case[(i + 13) % 26]
-        keys[upper_case[i]] = upper_case[(i + 13) % 26]
-    return keys
+        key_mapping[lower_case[i]] = lower_case[(i + 13) % 26]
+        key_mapping[upper_case[i]] = upper_case[(i + 13) % 26]
 
 
 def encrypt(text):
     """Return the rot13 encoded input string."""
-    return "".join(map(lambda char: keys.get(char, char), text))
+    return "".join(map(lambda char: key_map.get(char, char), text))
 
 
-keys = {}
-setup_keys(keys)
+key_map = {}
+setup_key_map(key_map)
 
 if __name__ == '__main__':
     import sys
