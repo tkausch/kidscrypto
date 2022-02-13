@@ -7,28 +7,28 @@
 """
 
 
-def create_keys():
+def setup_keys(keys):
     """Create encryption and decryption dictionary. """
 
     lower_case = "abcdefghijklmnopqrstuvwxyz"
     upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    keys = {}
     for i in range(0, 26):
         keys[lower_case[i]] = lower_case[(i + 13) % 26]
         keys[upper_case[i]] = upper_case[(i + 13) % 26]
     return keys
 
 
-def encrypt(input):
+def encrypt(text):
     """Return the rot13 encoded input string."""
-    return "".join(map(lambda char: keys.get(char, char), input))
+    return "".join(map(lambda char: keys.get(char, char), text))
 
 
-keys = create_keys()
+keys = {}
+setup_keys(keys)
 
 if __name__ == '__main__':
     import sys
     if len(sys.argv) < 2:
         print("Usage: rot13.py input")
-        exit(1)
+        sys.exit(1)
     print(encrypt(sys.argv[1]))
